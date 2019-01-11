@@ -4,7 +4,7 @@ import pandas as pd
 def simple_returns(adj_close_prices):
 	sr = adj_close_prices / adj_close_prices.shift(1) - 1
 	
-	return sr.dropna() 
+	return sr.iloc[1:] 
 
 def premiums(simple_returns, risk_free):
 	return simple_returns.subtract(risk_free, axis='index')
